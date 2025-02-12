@@ -2,3 +2,7 @@
 .env.development
 .env.production
 node_modules
+
+# Ignore image files but keep the directory
+public/images/*
+!public/images/.gitkeep
