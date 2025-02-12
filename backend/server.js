@@ -11,7 +11,12 @@ connectDb()
 const _dirname = path.resolve()
 
 app.use(express.json())
-app.use(cors())
+app.use(cors({
+  origin: process.env.NODE_ENV === 'production' 
+    ? 'https://your-frontend-url.onrender.com'
+    : 'http://localhost:5173',
+  credentials: true
+}))
 app.use(express.static("public"))
 
 app.use("/",require("./routes/user"))
