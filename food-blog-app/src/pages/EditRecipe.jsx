@@ -10,7 +10,7 @@ export default function EditRecipe() {
 
     useEffect(()=>{
         const getData=async()=>{
-            await axios.get(`${API_URL}/recipe/${id}`)
+            await axios.get(`/recipe/${id}`)
             .then(response=>{
                 let res=response.data
                 setRecipeData({
@@ -31,10 +31,10 @@ export default function EditRecipe() {
     const onHandleSubmit = async (e) => {
         e.preventDefault()
         console.log(recipeData)
-        await axios.put(`${API_URL}/recipe/${id}`, recipeData,{
-            headers:{
-                'Content-Type':'multipart/form-data',
-                'authorization':'bearer '+localStorage.getItem("token")
+        await axios.put(`/recipe/${id}`, recipeData, {
+            headers: {
+                'Content-Type': 'multipart/form-data',
+                'authorization': 'bearer ' + localStorage.getItem("token")
             }
         })
             .then(() => navigate("/myRecipe"))
